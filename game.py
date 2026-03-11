@@ -11,8 +11,8 @@ class Game:
         self.sötétkék: tuple[int ,int ,int] = (50, 50, 130)
 
         self.óra = pygame.time.Clock()  # a játék sebességét adja meg
-        rács: Grid = Grid()
-        rács.rács_kiíratása_consolra()
+        self.rács: Grid = Grid()
+        self.rács.rács_kiíratása_consolra()
 
     def game_loop(self) -> None:
         while True:
@@ -21,5 +21,6 @@ class Game:
                     pygame.quit()
                     sys.exit()
             self.ablak.fill(self.sötétkék)
+            self.rács.draw(self.ablak)
             pygame.display.update()
             self.óra.tick(60)

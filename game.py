@@ -1,8 +1,20 @@
+import sys
 import pygame
 
 
 class Game:
     def __init__(self) -> None:
         pygame.init()
-        ablak: pygame.Surface = pygame.display.set_mode((1200, 600))
-        print(ablak)
+        self.ablak: pygame.Surface = pygame.display.set_mode((1200, 600))
+        pygame.display.set_caption("Tetris")
+
+        self.óra = pygame.time.Clock()  # a játék sebességét adja meg
+
+    def game_loop(self) -> None:
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+            pygame.display.update()
+            self.óra.tick(60)

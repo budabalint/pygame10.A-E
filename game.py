@@ -1,5 +1,6 @@
 import sys
 import pygame
+from blocks import LBlock
 from grid import Grid
 
 
@@ -12,9 +13,9 @@ class Game:
 
         self.óra = pygame.time.Clock()  # a játék sebességét adja meg
         self.rács: Grid = Grid()
-        self.rács.rács[0][0] = 1
-        self.rács.rács[0][5] = 3
-        self.rács.rács[4][6] = 2
+        
+        self.block = LBlock()
+        
         self.rács.rács_kiíratása_consolra()
 
     def game_loop(self) -> None:
@@ -25,5 +26,9 @@ class Game:
                     sys.exit()
             self.ablak.fill(self.sötétkék)
             self.rács.draw(self.ablak)
+            self.block.draw(self.ablak)
+            
             pygame.display.update()
+            
             self.óra.tick(60)
+            

@@ -7,6 +7,7 @@ class Grid:
     _sorok_száma: int = 20
     _oszlopok_száma: int = 10
     _block_méret: int = 40
+    _offset_x: int = 400
 
     def __init__(self) -> None:
         self.rács: list[list[int]] = [
@@ -28,9 +29,9 @@ class Grid:
             for oszlop in range(self._oszlopok_száma):
                 cella_értéke: int = self.rács[sor][oszlop]
                 cella_négyzet = pygame.Rect(
-                    (oszlop+10) * self._block_méret +1,
-                    sor * self._block_méret+1,
-                    self._block_méret-1,
-                    self._block_méret-1,
+                    (oszlop) * self._block_méret + 1 + self._offset_x,
+                    sor * self._block_méret + 1,
+                    self._block_méret - 1,
+                    self._block_méret - 1,
                 )
                 pygame.draw.rect(screen, self.színek[cella_értéke], cella_négyzet)

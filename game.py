@@ -15,6 +15,7 @@ class Game:
         self.rács: Grid = Grid()
         
         self.block = LBlock()
+        self.block.move(5,5)
         
         self.rács.rács_kiíratása_consolra()
 
@@ -27,7 +28,6 @@ class Game:
             self.ablak.fill(self.sötétkék)
             self.rács.draw(self.ablak)
             self.block.draw(self.ablak)
-            
             pygame.display.update()
             
             self.óra.tick(60)

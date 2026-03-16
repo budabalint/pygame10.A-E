@@ -1,7 +1,8 @@
 import sys
 import pygame
-from blocks import LBlock
+from blocks import *
 from grid import Grid
+from tetris import Tetris
 
 
 class Game:
@@ -13,8 +14,8 @@ class Game:
 
         self.óra = pygame.time.Clock()  # a játék sebességét adja meg
         self.rács: Grid = Grid()
-        
-        self.block = LBlock()
+        self.tetris = Tetris()
+
         
         self.rács.rács_kiíratása_consolra()
 
@@ -26,8 +27,7 @@ class Game:
                     sys.exit()
             self.ablak.fill(self.sötétkék)
             self.rács.draw(self.ablak)
-            self.block.draw(self.ablak)
-            
+            self.tetris.draw(self.ablak)
             pygame.display.update()
             
             self.óra.tick(60)

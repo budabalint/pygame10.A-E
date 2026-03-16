@@ -32,7 +32,8 @@ class Game:
                         self.tetris.mozgás_jobbra()
                     if event.key == pygame.K_DOWN:
                         self.tetris.mozgás_le()
-
+                    if event.key == pygame.K_UP:
+                        self.tetris.rotate()
 
 
 

@@ -28,6 +28,17 @@ class Block:
             position = Position(position.sor + self._sor_eltérés, position.oszlop + self._oszlop_eltérés)
             moved_tiles.append(position)
         return moved_tiles
+    
+    def rotate(self):
+        self.rotation_state += 1
+        if self.rotation_state == len(self.cells):
+            self.rotation_state = 0
+
+    def undo_rotation(self):
+        self.rotation_state -= 1
+        if self.rotation_state == 0:
+            self.rotation_state = len(self.cells) - 1
+    
 
     def draw(self, screen: pygame.surface.Surface, sor_eltérés: int = 0, oszlop_eltérés: int = 0):
         tiles: list[Position] = self.get_cell_positions()

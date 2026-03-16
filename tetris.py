@@ -16,6 +16,16 @@ class Tetris:
         self.blocks.remove(block)
         return block
     
+    def mozgás_balra(self):
+        self.current_block.move(0, -1)
+
+    def mozgás_jobbra(self):
+        self.current_block.move(0, 1)
+
+    def mozgás_le(self):
+        self.current_block.move(1, 0)
+
+    
     def draw(self, screen: pygame.Surface):
         self.grid.draw(screen)
         self.current_block.draw(screen)

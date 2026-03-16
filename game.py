@@ -25,6 +25,17 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        self.tetris.mozgás_balra()
+                    if event.key == pygame.K_RIGHT:
+                        self.tetris.mozgás_jobbra()
+                    if event.key == pygame.K_DOWN:
+                        self.tetris.mozgás_le()
+
+
+
+
             self.ablak.fill(self.sötétkék)
             self.rács.draw(self.ablak)
             self.tetris.draw(self.ablak)

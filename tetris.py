@@ -18,12 +18,25 @@ class Tetris:
     
     def mozgás_balra(self):
         self.current_block.move(0, -1)
+        if self.bent_van_a_block() == False:
+            self.current_block.move(0, 1)
 
     def mozgás_jobbra(self):
-        self.current_block.move(0, 1)
+        self.current_block.move(0, 1)        
+        if self.bent_van_a_block() == False:
+            self.current_block.move(0, -1)
 
     def mozgás_le(self):
         self.current_block.move(1, 0)
+        if self.bent_van_a_block() == False:
+            self.current_block.move(-1, 0)
+
+    def bent_van_a_block(self):
+        lapok = self.current_block.get_cell_positions()
+        for lap in lapok:
+            if self.grid.bent_van(lap.sor, lap.oszlop) == False:
+                return False
+        return True
 
     
     def draw(self, screen: pygame.Surface):

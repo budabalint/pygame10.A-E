@@ -24,6 +24,11 @@ class Grid:
                 print(self.rács[sor][oszlop], end=" ")
             print()
 
+    def bent_van(self, sor, oszlop):
+        if sor >= 0 and sor < self._sorok_száma and oszlop >= 0 and oszlop < self._oszlopok_száma:
+            return True
+        return False
+
     def draw(self, screen: pygame.Surface):
         for sor in range(self._sorok_száma):
             for oszlop in range(self._oszlopok_száma):

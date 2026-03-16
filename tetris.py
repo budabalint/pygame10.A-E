@@ -31,6 +31,11 @@ class Tetris:
         if self.bent_van_a_block() == False:
             self.current_block.move(-1, 0)
 
+    def rotate(self):
+        self.current_block.rotate()
+        if self.bent_van_a_block() == False:
+            self.current_block.undo_rotation()
+
     def bent_van_a_block(self):
         lapok = self.current_block.get_cell_positions()
         for lap in lapok:

@@ -29,16 +29,18 @@ class Game:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
-                        self.tetris.mozgás_balra()
-                    if event.key == pygame.K_RIGHT:
-                        self.tetris.mozgás_jobbra()
-                    if event.key == pygame.K_DOWN:
-                        self.tetris.mozgás_le()
-                    if event.key == pygame.K_UP:
-                        self.tetris.rotate()
+                    if self.tetris.game_over == False:
+                        if event.key == pygame.K_LEFT:
+                            self.tetris.mozgás_balra()
+                        if event.key == pygame.K_RIGHT:
+                            self.tetris.mozgás_jobbra()
+                        if event.key == pygame.K_DOWN:
+                            self.tetris.mozgás_le()
+                        if event.key == pygame.K_UP:
+                            self.tetris.rotate()
                 if event.type == self.GAME_UPDATE:
-                    self.tetris.mozgás_le()
+                    if self.tetris.game_over == False:
+                        self.tetris.mozgás_le()
 
 
 

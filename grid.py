@@ -29,6 +29,30 @@ class Grid:
             return True
         return False
     
+    def tele_van_e_a_sor(self, sor: int) -> bool:
+        for oszlop in range(self._oszlopok_száma):
+            if self.rács[sor][oszlop] == 0:
+                return False
+        return True
+    
+    def sor_törlése(self, sor: int) -> None:
+        for oszlop in range(self._oszlopok_száma):
+            self.rács[sor][oszlop] = 0
+            
+    def sor_lemozgatása(self, sor: int, sorok_száma: int) -> None:
+        for oszlop in range(self._oszlopok_száma):
+            self.rács[sor+sorok_száma][oszlop] = self.rács[sor][oszlop]
+            self.rács[sor][oszlop]
+            
+    def teljes_sor_törlése(self) -> int:
+        completed: int = 0
+        for sor in range(self._sorok_száma-1,0,-1):
+            if self.tele_van_e_a_sor(sor):
+                self.sor_törlése(sor)
+                completed += 1
+            elif completed > 0:
+                self.sor_lemozgatása(sor, completed)
+        return completed
     def üres(self, sor: int, oszlop: int):
         if self.rács[sor][oszlop] == 0:
             return True

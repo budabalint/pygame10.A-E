@@ -8,6 +8,7 @@ class Tetris:
         self.blocks: list[Block] = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
         self.current_block: Block = self.get_random_block()
         self.next_block: Block = self.get_random_block()
+        self.game_over = False
         
     def get_random_block(self):
         if len(self.blocks) == 0:
@@ -38,6 +39,8 @@ class Tetris:
             self.grid.rács[position.sor][position.oszlop] = self.current_block.id
         self.current_block = self.next_block
         self.next_block = self.get_random_block()
+        if self.block_fits() == False:
+            self.game_over = True
 
     def block_fits(self):
         lapok = self.current_block.get_cell_positions()

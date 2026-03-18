@@ -39,6 +39,7 @@ class Tetris:
             self.grid.rács[position.sor][position.oszlop] = self.current_block.id
         self.current_block = self.next_block
         self.next_block = self.get_random_block()
+        self.grid.teljes_sor_törlése()
         if self.block_fits() == False:
             self.game_over = True
 

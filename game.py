@@ -19,6 +19,9 @@ class Game:
         
         self.rács.rács_kiíratása_consolra()
 
+        self.GAME_UPDATE = pygame.USEREVENT
+        pygame.time.set_timer(self.GAME_UPDATE, 200)
+
     def game_loop(self) -> None:
         while True:
             for event in pygame.event.get():
@@ -34,6 +37,8 @@ class Game:
                         self.tetris.mozgás_le()
                     if event.key == pygame.K_UP:
                         self.tetris.rotate()
+                if event.type == self.GAME_UPDATE:
+                    self.tetris.mozgás_le()
 
 
 

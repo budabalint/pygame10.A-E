@@ -53,6 +53,10 @@ class Grid:
             elif completed > 0:
                 self.sor_lemozgatása(sor, completed)
         return completed
+    def üres(self, sor: int, oszlop: int):
+        if self.rács[sor][oszlop] == 0:
+            return True
+        return False
 
     def draw(self, screen: pygame.Surface):
         for sor in range(self._sorok_száma):

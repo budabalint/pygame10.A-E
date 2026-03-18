@@ -24,7 +24,7 @@ class Grid:
                 print(self.rács[sor][oszlop], end=" ")
             print()
 
-    def bent_van(self, sor, oszlop):
+    def bent_van(self, sor: int, oszlop: int):
         if sor >= 0 and sor < self._sorok_száma and oszlop >= 0 and oszlop < self._oszlopok_száma:
             return True
         return False

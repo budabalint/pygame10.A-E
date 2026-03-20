@@ -8,8 +8,17 @@ class Tetris:
         self.blocks: list[Block] = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
         self.current_block: Block = self.get_random_block()
         self.next_block: Block = self.get_random_block()
-        self.game_over = False
+        self.game_over: bool = False
+        self.pontszám: int = 0
         
+    def pontszám_frissítése(self, törölt_sorok: int, pontok_csökkentése: int):
+        if törölt_sorok == 1:
+            self.pontszám += 100
+        elif törölt_sorok == 2:
+            self.pontszám += 300
+        elif törölt_sorok == 3:
+            self.pontszám += 500
+        self.pontszám += pontok_csökkentése
     def get_random_block(self):
         if len(self.blocks) == 0:
             self.blocks = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
@@ -39,7 +48,9 @@ class Tetris:
             self.grid.rács[position.sor][position.oszlop] = self.current_block.id
         self.current_block = self.next_block
         self.next_block = self.get_random_block()
-        self.grid.teljes_sor_törlése()
+        
+        törölt_sorok: int = self.grid.teljes_sor_törlése()
+        self.pontszám_frissítése(törölt_sorok, 0)
         if self.block_fits() == False:
             self.game_over = True
 
@@ -62,6 +73,21 @@ class Tetris:
             if self.grid.bent_van(lap.sor, lap.oszlop) == False:
                 return False
         return True
+    
+    def reset(self) -> None:
+        self.grid.reset()
+        self.blocks = [
+            IBlock(),
+            JBlock(),
+            LBlock(),
+            OBlock(),
+            SBlock(),
+            TBlock(),
+            ZBlock(),
+        ]
+        self.current_block = self.get_random_block()
+        self.next_block = self.get_random_block()
+        self.pontszám = 0
 
     
     def draw(self, screen: pygame.Surface):

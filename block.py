@@ -5,7 +5,7 @@ from position import Position
 
 
 class Block:
-    _eltérés_x: int = 400
+    _eltérés_x: int = 150
 
     
     def __init__(self, id: int) -> None:

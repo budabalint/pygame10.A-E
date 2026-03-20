@@ -93,3 +93,9 @@ class Tetris:
     def draw(self, screen: pygame.Surface):
         self.grid.draw(screen)
         self.current_block.draw(screen)
+        if self.next_block.id == 3:
+            self.next_block.draw(screen, 9.3, 10.45)
+        elif self.next_block.id == 4:
+            self.next_block.draw(screen, 8.8, 10.45)
+        else:
+            self.next_block.draw(screen, 8.7, 10.75)

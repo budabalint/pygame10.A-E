@@ -51,7 +51,7 @@ class Game:
                     if self.tetris.game_over == False:
                         self.tetris.mozgás_le()
 
-
+            self.pont_érték_területe = self.betűtípus.render(str(self.tetris.pontszám), True, Colors._fehér)
 
             self.ablak.fill(Colors._sötétkék)
             self.ablak.blit(self.pont_felirat_területe, (730, 26, 100, 65))
@@ -59,6 +59,7 @@ class Game:
             if self.tetris.game_over == True:
                 self.ablak.blit(self.game_over_felirat, (675, 581, 100, 65))    
             pygame.draw.rect(self.ablak, Colors._világoskék, self.pontok_területe, 0, 10)
+            self.ablak.blit(self.pont_érték_területe, self.pont_érték_területe.get_rect(centerx = self.pontok_területe.centerx, centery = self.pontok_területe.centery))
             pygame.draw.rect(self.ablak, Colors._világoskék, self.következő_területe, 0, 10)
             self.rács.draw(self.ablak)
             self.tetris.draw(self.ablak)

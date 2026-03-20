@@ -2,15 +2,21 @@ import sys
 import pygame
 from blocks import *
 from grid import Grid
+from colors import Colors
 from tetris import Tetris
 
 
 class Game:
     def __init__(self) -> None:
         pygame.init()
-        self.ablak: pygame.Surface = pygame.display.set_mode((1200, 800))
+        self.betűtípus = pygame.font.Font(None, 40)
+        self.pont_felirat_területe = self.betűtípus.render("Pont", True, Colors._fehér)
+        self.következő_felirat_területe = self.betűtípus.render("Next", True, Colors._fehér)
+        self.game_over_felirat = self.betűtípus.render("GAME OVER", True, Colors._fehér)
+        self.pontok_területe = pygame.Rect(595, 71, 340, 77)
+        self.következő_területe = pygame.Rect(595, 277, 340, 232)
+        self.ablak: pygame.Surface = pygame.display.set_mode((1000, 800))
         pygame.display.set_caption("Tetris")
-        self.sötétkék: tuple[int ,int ,int] = (50, 50, 130)
 
         self.óra = pygame.time.Clock()  # a játék sebességét adja meg
         self.rács: Grid = Grid()
@@ -44,7 +50,13 @@ class Game:
 
 
 
-            self.ablak.fill(self.sötétkék)
+            self.ablak.fill(Colors._sötétkék)
+            self.ablak.blit(self.pont_felirat_területe, (730, 26, 100, 65))
+            self.ablak.blit(self.következő_felirat_területe, (733, 232, 100, 65))
+            if self.tetris.game_over == True:
+                self.ablak.blit(self.game_over_felirat, (675, 581, 100, 65))    
+            pygame.draw.rect(self.ablak, Colors._világoskék, self.pontok_területe, 0, 10)
+            pygame.draw.rect(self.ablak, Colors._világoskék, self.következő_területe, 0, 10)
             self.rács.draw(self.ablak)
             self.tetris.draw(self.ablak)
             pygame.display.update()

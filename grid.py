@@ -7,7 +7,7 @@ class Grid:
     _sorok_száma: int = 20
     _oszlopok_száma: int = 10
     _block_méret: int = 40
-    _offset_x: int = 400
+    _offset_x: int = 150
 
     def __init__(self) -> None:
         self.rács: list[list[int]] = [

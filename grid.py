@@ -53,6 +53,12 @@ class Grid:
             elif completed > 0:
                 self.sor_lemozgatása(sor, completed)
         return completed
+    
+    def reset(self) -> None:
+        for sor in range(self._sorok_száma):
+            for oszlop in range(self._oszlopok_száma):
+                self.rács[sor][oszlop] = 0
+    
     def üres(self, sor: int, oszlop: int):
         if self.rács[sor][oszlop] == 0:
             return True

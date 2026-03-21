@@ -10,6 +10,7 @@ class Colors:
     _fehér: tuple[int, int, int] = (255, 255, 255)
     _sötétkék: tuple[int, int, int] = (44, 44, 127)
     _világoskék: tuple[int, int, int] = (59, 85, 162)
+    _barna: tuple[int, int, int] =(139, 69, 19)
 
     @classmethod
     def cella_színek_lekérése(cls):
@@ -23,4 +24,5 @@ class Colors:
             cls._cián,
             cls._kék,
             cls._fehér,
+            cls._barna
         ]

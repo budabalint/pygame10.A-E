@@ -79,3 +79,14 @@ class ZBlock(Block):
             3: [Position(0, 1), Position(1, 0), Position(1, 1), Position(2, 0)],
         }
         self.move(0,3)
+
+class SmallIBlock(Block):
+    def __init__(self) -> None:
+        super().__init__(id=8)
+        self.cells: dict[int, list[Position]] = {
+            0: [Position(1, 0), Position(1, 1), Position(1, 2)],
+            1: [Position(0, 1), Position(1, 1), Position(2, 1)],
+            2: [Position(1, 0), Position(1, 1), Position(1, 2)],
+            3: [Position(0, 1), Position(1, 1), Position(2, 1)],
+        }
+        self.move(-1,3)

@@ -5,7 +5,7 @@ import pygame
 class Tetris:
     def  __init__(self) -> None:
         self.grid = Grid()
-        self.blocks: list[Block] = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
+        self.blocks: list[Block] = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock(), SmallIBlock()]
         self.current_block: Block = self.get_random_block()
         self.next_block: Block = self.get_random_block()
         self.game_over: bool = False
@@ -21,7 +21,7 @@ class Tetris:
         self.pontszám += pontok_csökkentése
     def get_random_block(self):
         if len(self.blocks) == 0:
-            self.blocks = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
+            self.blocks = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock(), SmallIBlock()]
         block: Block = r.choice(self.blocks)
         self.blocks.remove(block)
         return block
@@ -84,6 +84,7 @@ class Tetris:
             SBlock(),
             TBlock(),
             ZBlock(),
+            SmallIBlock(),
         ]
         self.current_block = self.get_random_block()
         self.next_block = self.get_random_block()

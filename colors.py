@@ -22,4 +22,5 @@ class Colors:
             cls._lila,
             cls._cián,
             cls._kék,
+            cls._fehér,
         ]

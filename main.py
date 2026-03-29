@@ -1,8 +1,10 @@
+from jatek import Jatek
 
-from game import Game
+def fo_fuggveny() -> None:
+    j: Jatek = Jatek()
+    while True:
+        j.frissit()
+        j.rajzol()
 
-def main() -> None:
-    g: Game = Game()
-    g.game_loop()
 if __name__ == "__main__":
-    main()
+    fo_fuggveny()

@@ -67,7 +67,7 @@ class SzinKezelo:
         return self._sotetlila
 
     def cella_szinek_lekerese(self) -> list[tuple[int, int, int]]:
-        return[
+        return [
             self._sotetszurke,
             self._zold,
             self._piros,
@@ -77,7 +77,8 @@ class SzinKezelo:
             self._cian,
             self._kek,
             self._sotetlila,
-            self._barna
+            self._barna,
         ]
+
 
 Szinek: SzinKezelo = SzinKezelo()
